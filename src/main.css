@@ -1,0 +1,29 @@
+@import '/src//css//mobile.css';
+@import '/src//css//tablet.css';
+@import '/src//css//desktop.css';
+@import '/src//css//lg-desktop.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.icon-play {
+  width: 40px;
+  height: 40px;
+}

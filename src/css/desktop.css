@@ -1,0 +1,42 @@
+.sidebar {
+  position: fixed;
+  background-color: #0f172a;
+  color: #fff;
+  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px 35px;
+}
+
+.side-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-play {
+  cursor: pointer;
+}
+
+.side-items {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px;
+}
+
+.side-items i {
+  font-size: 20px;
+}
+
+.side-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.side-icons:hover {
+  cursor: pointer;
+}
