@@ -8,27 +8,37 @@
   <link rel="stylesheet" href="./main.css">
 </head>
 <body>
+  <navbar class="navbar">
+    <span id="hamburger" class="hamburger">
+      <i class="fa-solid fa-bars" style="color: #fff"></i>
+    </span>
+  </navbar>
+  <sidebar class="sidebar hide">
+    <span id="close-sidebar" class="close-nav">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+    <div class="side-title">
+      <img src="./images/icon-play.png" class="icon-play"/>
+      <label>Bem vindo ao Play</label>
+    </div>
+    <nav class="side-items">
+      <a class="side-icons">
+        <i class="fa-solid fa-video" style="color: #ef4444"></i>
+        <span>Videos</span>
+      </a>
+      <a class="side-icons">
+        <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+        <span>Favoritos</span>
+      </a>
+      <a class="side-icons">
+        <i class="fa-solid fa-right-from-bracket" style="color: #0ea5e9;"></i>
+        <span>Sair</span>
+      </a>
+    </nav>
+  </sidebar>
   <main>
-    <sidebar class="sidebar">
-      <div class="side-title">
-        <img src="./images/icon-play.png" class="icon-play"/>
-        <label>Bem vindo ao Play</label>
-      </div>
-      <nav class="side-items">
-        <a class="side-icons">
-          <i class="fa-solid fa-video" style="color: #ef4444"></i>
-          <span>Videos</span>
-        </a>
-        <a class="side-icons">
-          <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
-          <span>Favoritos</span>
-        </a>
-        <a class="side-icons">
-          <i class="fa-solid fa-right-from-bracket" style="color: #0ea5e9;"></i>
-          <span>Sair</span>
-        </a>
-      </nav>
-    </sidebar>
+
   </main>
+  <script src="./main.js"></script>
 </body>
 </html>

@@ -1,12 +1,51 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  padding: 12px 15px;
+  background-color: #ef4444;
+}
+
+.navbar .hamburger i:hover {
+  cursor: pointer;
+}
+
+.navbar .icon-play {
+  width: 32px;
+  height: 32px;
+}
+
 .sidebar {
   position: fixed;
-  background-color: #0f172a;
-  color: #fff;
+  z-index: 5;
   width: 30vh;
-  display: flex;
+  display: block;
   flex-direction: column;
   height: 100vh;
-  padding: 20px 35px;
+  padding: 20px;
+  background-color: #0f172a;
+  color: #fff;
+}
+
+.sidebar .close-nav {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.sidebar .close-nav:hover {
+  cursor: pointer;
+  color: #ef4444;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 .side-title {
@@ -15,7 +54,12 @@
   gap: 15px;
 }
 
-.icon-play {
+.sidebar .icon-play {
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar .icon-play {
   cursor: pointer;
 }
 
