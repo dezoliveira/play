@@ -1,0 +1,24 @@
+/* Media queries */
+
+@import './css/mobile.css';
+@import './css/tablet.css';
+@import './css/desktop.css';
+@import './css/lg-desktop.css';
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
