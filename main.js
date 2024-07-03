@@ -1,4 +1,12 @@
-const apiKey = "API KEY HERE"
+import config from "./config.js";
+
+const YOUTUBE_API_KEY = config.YOUTUBE_API_KEY
+
+if (!YOUTUBE_API_KEY) {
+  throw new Error("No API key is provided");
+}
+
+const apiKey = YOUTUBE_API_KEY
 const apiURL = "https://www.googleapis.com/youtube/v3"
 
 const params = {
