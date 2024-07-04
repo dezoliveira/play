@@ -1,7 +1,8 @@
 /* this file is mobile first */
 
 .navbar {
-  position: fixed;
+  /* position: absolute; */
+  top: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -84,7 +85,6 @@
 
 .show {
   display: flex;
-  
 }
 
 .side-title {
@@ -124,6 +124,9 @@
   cursor: pointer;
 }
 
+.main {
+  padding: 30px;
+}
 
 /* Tablets */
 @media screen and (min-width: 481px) and (max-width: 768px) {
