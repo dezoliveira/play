@@ -20,6 +20,7 @@ const hamburger = document.getElementById("hamburger")
 const closeSidebar = document.getElementById("close-sidebar")
 const sidebar = document.querySelector("sidebar")
 const videosContainer = document.getElementById("videos-container")
+const main = document.querySelector(".main")
 
 window.addEventListener('load', () => {
   getTopVideos()
@@ -39,8 +40,12 @@ const renderVideos = (videos) => {
   if (videos) {
     for(let i=0; i <= 20; i++) {
       videosContainer.innerHTML += `
-        <img src="${videos[i].snippet.thumbnails.default.url}" />
-        <p>${videos[i].snippet.description}</p>
+        <div class="card">
+          <label>${videos[i].snippet.title}</label>
+          <img
+            src="${videos[i].snippet.thumbnails.medium.url}"
+
+        </div>
       `
     }
   }
@@ -50,14 +55,14 @@ const showSidebar = (e) => {
     e.preventDefault()
     sidebar.classList.remove("hide")
     sidebar.classList.add("show")
-    videosContainer.style.marginLeft = '320px'
+    main.style.marginLeft = '320px'
 }
 
 const hideSidebar = (e) => {
     e.preventDefault()
     sidebar.classList.remove("show")
     sidebar.classList.add("hide")
-    videosContainer.style.marginLeft = 'auto'
+    main.style.marginLeft = 'auto'
 }
 
 hamburger.addEventListener("click", showSidebar)

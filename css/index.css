@@ -2,7 +2,9 @@
 
 .navbar {
   /* position: absolute; */
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -55,7 +57,8 @@
 }
 
 .sidebar {
-  position: fixed;
+  position: absolute;
+  top: 0;
   font-size: x-large;
   z-index: 5;
   display: flex;
@@ -125,7 +128,37 @@
 }
 
 .main {
-  padding: 30px;
+  padding: 50px;
+  margin-top: 50px;
+  position: sticky;
+}
+
+.main .top-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding-bottom: 50px;
+}
+
+.main .top-title i {
+  font-size: 38px;
+  color: goldenrod;
+}
+
+.videos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  place-items: center;
+}
+
+.videos-container .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  min-width: 400px;
 }
 
 /* Tablets */
