@@ -161,6 +161,10 @@
   min-width: 400px;
 }
 
+.card img {
+  border-radius: 3%;
+}
+
 /* Tablets */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .navbar .searchBar input{
@@ -220,7 +224,7 @@
   }
   
   .sidebar {
-    font-size: x-large;
+    font-size: medium;
     width: 30vh;
   }
   

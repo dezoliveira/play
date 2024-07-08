@@ -28,28 +28,58 @@ window.addEventListener('load', () => {
 
 const getTopVideos = async () => {
   const req = await fetch(`${apiURL}/search?key=${apiKey}&type=${params.type}&part=${params.part}&${params.rate}&maxResults=${params.maxResults}`)
+  
+  if (req.status !== 200) {
+    main.innerHTML += `
+      <div class="request-error">
+        <h2>Ocorreu um erro, tente novamente mais tarde</h2>
+      </div>
+    `
+  }
+  
   const data = await req.json()
   console.log(data.items)
 
   const items = data.items
 
   renderVideos(items)
+  // getChannelId(items)
 }
 
 const renderVideos = (videos) => {
   if (videos) {
-    for(let i=0; i <= 20; i++) {
+    for(let i=0; i <= videos.length -1; i++) {
       videosContainer.innerHTML += `
         <div class="card">
+          <small><strong>${getPuplishedTime(videos[i].snippet.publishedAt)}</strong></small>
+          <img src="${videos[i].snippet.thumbnails.medium.url}"
           <label>${videos[i].snippet.title}</label>
-          <img
-            src="${videos[i].snippet.thumbnails.medium.url}"
-
+          <small>${videos[i].snippet.channelTitle}</small>
         </div>
       `
     }
   }
 }
+
+const getPuplishedTime = (dateTime) => {
+  const date = new Date(dateTime).toLocaleDateString()
+  const time = new Date(dateTime).toLocaleTimeString()
+  const dateString = `Publicado em ${date} as ${time}`
+  return dateString
+}
+
+// const getChannelId  = (items) => {
+//   console.log('get in')
+//   const channels = []
+//   // if (items){
+//     console.log(items)
+//     for(let i=0; i <= items.length -1; i++){
+//       channels.push(items[i].snippet.channelId)
+//     }
+//   // }
+
+//   console.log('channels', channels)
+// }
 
 const showSidebar = (e) => {
     e.preventDefault()
