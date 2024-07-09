@@ -1,6 +1,7 @@
 /* Media queries */
 
 @import './css/index.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
   font-family: 'Inter', sans-serif;
@@ -10,14 +11,22 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-y: hidden;
+  
 }
 
-/* main {
-  height: 100vh;
-} */
+main {
+  max-height: 80vh;
+  height: 80vh;
+  overflow-y: scroll;
+}
 
 a {
   text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #ef4444;
 }
 
 .request-error {
@@ -25,4 +34,23 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 15px;
+  font-size: larger;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: .9;
+}
+
+.btn-primary {
+  background-color: #ef4444;
+  color: #fff;
+  font-weight: 500;
+  border: 0;
+  border-radius: 5px;
 }

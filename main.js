@@ -51,10 +51,20 @@ const renderVideos = (videos) => {
     for(let i=0; i <= videos.length -1; i++) {
       videosContainer.innerHTML += `
         <div class="card">
-          <small><strong>${getPuplishedTime(videos[i].snippet.publishedAt)}</strong></small>
-          <img src="${videos[i].snippet.thumbnails.medium.url}"
+          <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
+          <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
+            <img src="${videos[i].snippet.thumbnails.medium.url}" />
+          </a>
           <label>${videos[i].snippet.title}</label>
-          <small>${videos[i].snippet.channelTitle}</small>
+          <span class="channel-info">
+            <img src="./images/icon-play.png" width="18px"/>
+            <small>${videos[i].snippet.channelTitle}</small>
+          </span>
+          <span class="card-footer">
+            <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
+              <button class="btn btn-primary">Play</button>
+            </a>
+          </span>
         </div>
       `
     }
