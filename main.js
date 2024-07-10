@@ -23,7 +23,13 @@ const videosContainer = document.getElementById("videos-container")
 const main = document.querySelector(".main")
 
 window.addEventListener('load', () => {
-  getTopVideos()
+  const localVideos = localStorage.getItem("videos")
+  
+  if (!localVideos) {
+    getTopVideos()
+  } else {
+    renderVideos(JSON.parse(localVideos))
+  }
 })
 
 const getTopVideos = async () => {
@@ -43,7 +49,12 @@ const getTopVideos = async () => {
   const items = data.items
 
   renderVideos(items)
-  // getChannelId(items)
+  addToLocalStorage(items)
+}
+
+const addToLocalStorage = (items) => {
+  console.log(items)
+  localStorage.setItem("videos", JSON.stringify(items))
 }
 
 const renderVideos = (videos) => {
