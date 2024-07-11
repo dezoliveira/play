@@ -30,25 +30,28 @@
     <nav class="side-items">
       <a class="side-icons">
         <i class="fa-solid fa-video" style="color: #ef4444"></i>
-        <span>Videos</span>
+        <span id="videos">Videos</span>
       </a>
       <a class="side-icons">
         <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
-        <span>Favoritos</span>
+        <span id="favorites">Favoritos</span>
       </a>
       <a class="side-icons">
         <i class="fa-solid fa-right-from-bracket" style="color: #0ea5e9;"></i>
-        <span>Sair</span>
+        <span id="exit">Sair</span>
       </a>
     </nav>
   </sidebar>
   <main class="main">
-    <span class="top-title">
+    <span id="page-title" class="page-title">
       <i class="fa-solid fa-medal"></i>
       <h1 style="text-align: center;">Top Videos</h1>
     </span>
     <div id="videos-container" class="videos-container">
       
+    </div>
+    <div id="favorites-container" class="favorites-container" style="display: none;">
+      <h1>favorites</h1>
     </div>
   </main>
   <script type="module" src="./main.js"></script>

@@ -133,7 +133,7 @@
   position: sticky;
 }
 
-.main .top-title {
+.main .page-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +141,7 @@
   padding-bottom: 50px;
 }
 
-.main .top-title i {
+.main .page-title i {
   font-size: 38px;
   color: goldenrod;
 }

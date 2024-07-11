@@ -20,7 +20,13 @@ const hamburger = document.getElementById("hamburger")
 const closeSidebar = document.getElementById("close-sidebar")
 const sidebar = document.querySelector("sidebar")
 const videosContainer = document.getElementById("videos-container")
+const favoritesContainer = document.getElementById("favorites-container")
 const main = document.querySelector(".main")
+const pageTitle = document.querySelector("#page-title")
+
+//sidebar
+const videos = document.getElementById('videos')
+const favorites = document.getElementById('favorites')
 
 window.addEventListener('load', () => {
   const localVideos = localStorage.getItem("videos")
@@ -120,6 +126,36 @@ const hideSidebar = (e) => {
     main.style.marginLeft = 'auto'
 }
 
+const togglePage = (page) => {
+  if (page === 'favorites') {
+    videosContainer.style.display = "none"
+    favoritesContainer.style.display = "grid"
+    pageTitle.children[0].classList = ""
+    pageTitle.children[0].classList.add("fa-solid", "fa-star")
+    pageTitle.children[1].textContent = "Favoritos"
+  }
+
+  if (page === 'videos') {
+    favoritesContainer.style.display = "none"
+    videosContainer.style.display = "grid"
+    pageTitle.children[0].classList = ""
+    pageTitle.children[0].classList.add("fa-solid", "fa-medal")
+    pageTitle.children[1].textContent = "Videos"
+  }
+}
+
 hamburger.addEventListener("click", showSidebar)
 closeSidebar.addEventListener("click", hideSidebar)
+
+videos.addEventListener("click", (e) => {
+  const id = e.target.id
+  togglePage(id)
+  e.preventDefault()
+})
+
+favorites.addEventListener("click", (e) => {
+  const id = e.target.id
+  togglePage(id)
+  e.preventDefault()
+})
 
