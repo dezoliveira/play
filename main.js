@@ -23,10 +23,13 @@ const videosContainer = document.getElementById("videos-container")
 const favoritesContainer = document.getElementById("favorites-container")
 const main = document.querySelector(".main")
 const pageTitle = document.querySelector("#page-title")
+const cardId = document.querySelector(".card")
 
 //sidebar
 const videos = document.getElementById('videos')
 const favorites = document.getElementById('favorites')
+
+const favoritesArray = []
 
 window.addEventListener('load', () => {
   const localVideos = localStorage.getItem("videos")
@@ -64,12 +67,17 @@ const addToLocalStorage = (items) => {
 }
 
 const renderVideos = (videos) => {
+  let html = ""
+
   if (videos) {
     for(let i=0; i <= videos.length -1; i++) {
-      videosContainer.innerHTML += `
-        <div class="card">
+      html += `
+        <div id="${videos[i].id.videoId}" class="card">
           <div class="card-header">
-            <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
+            <div class="card-title">
+              <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
+              <span class="favorites-star"><i class="fa-solid fa-star" style="font-size: 24px"></i><span>
+            </div>            
             <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
               <img src="${videos[i].snippet.thumbnails.medium.url}" />
             </a>
@@ -89,6 +97,28 @@ const renderVideos = (videos) => {
         </div>
       `
     }
+
+    videosContainer.innerHTML = html
+
+    const nodeList = document.querySelectorAll(".card .favorites-star")
+
+    if (nodeList) {
+      nodeList.forEach(node => {
+        node.addEventListener('click', (e) => {
+          e.preventDefault()
+          const nodeId = node.parentElement.parentElement.parentElement.id
+
+          node.classList.add('favorite')
+
+          let selectedVideo = videos.filter((video) => {
+            return video.id.videoId === nodeId.toString()
+          })
+
+          addToFavorites(selectedVideo)
+        })
+      })
+    }
+    
   }
 }
 
@@ -158,4 +188,9 @@ favorites.addEventListener("click", (e) => {
   togglePage(id)
   e.preventDefault()
 })
+
+const addToFavorites = (video) => {
+  console.log(video)
+  favoritesArray.push(video[0])
+}
 
