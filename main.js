@@ -170,7 +170,7 @@ const togglePage = (page) => {
     videosContainer.style.display = "grid"
     pageTitle.children[0].classList = ""
     pageTitle.children[0].classList.add("fa-solid", "fa-medal")
-    pageTitle.children[1].textContent = "Videos"
+    pageTitle.children[1].textContent = "Top Videos"
   }
 }
 

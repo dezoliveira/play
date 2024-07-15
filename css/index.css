@@ -180,6 +180,18 @@
   padding: 4px 0;
 }
 
+.videos-container .card .card-header .card-title .favorites-star {
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
+
+.videos-container .card .card-header .card-title .favorites-star:hover {
+  cursor: pointer;
+  opacity: .9;
+}
+
 .videos-container .card .card-header img {
   border-radius: 3%;
   max-width: 250px;
