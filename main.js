@@ -101,7 +101,7 @@ const renderVideos = (videos) => {
 
     videosContainer.innerHTML = html
 
-    const nodeList = document.querySelectorAll(".card .favorites-star")
+    const nodeList = document.querySelectorAll("#videos-container .card .favorites-star")
 
     if (nodeList) {
       nodeList.forEach(node => {
@@ -223,7 +223,7 @@ const renderFavorites = () => {
 
   favoritesContainer.innerHTML = html
 
-  const nodeList = document.querySelectorAll(".card .favorites-star")
+  const nodeList = document.querySelectorAll("#favorites-container .card .favorites-star")
 
   if (nodeList) {
     nodeList.forEach(node => {
