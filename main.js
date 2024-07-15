@@ -28,7 +28,7 @@ const pageTitle = document.querySelector("#page-title")
 const videos = document.getElementById('videos')
 const favorites = document.getElementById('favorites')
 
-const favoritesArray = []
+let favoritesArray = []
 
 // on load page
 window.addEventListener('load', () => {
@@ -179,6 +179,16 @@ const addToFavorites = (video) => {
   favoritesArray.push(video[0])
 }
 
+const removeFavorites = (video) => {
+  console.log(video)
+  let filteredArray = favoritesArray.filter((favorite) => {
+    return favorite.id.videoId !== video[0].id.videoId
+  })
+
+  favoritesArray = filteredArray
+  renderFavorites()
+}
+
 const renderFavorites = () => {
   const videos = favoritesArray
   let html = ""
@@ -212,6 +222,25 @@ const renderFavorites = () => {
   }
 
   favoritesContainer.innerHTML = html
+
+  const nodeList = document.querySelectorAll(".card .favorites-star")
+
+  if (nodeList) {
+    nodeList.forEach(node => {
+      node.addEventListener('click', (e) => {
+        e.preventDefault()
+        const nodeId = node.parentElement.parentElement.parentElement.id
+
+        node.classList.remove('favorite')
+
+        let selectedVideo = videos.filter((video) => {
+          return video.id.videoId === nodeId.toString()
+        })
+
+        removeFavorites(selectedVideo)
+      })
+    })
+  }
 }
 
 // Listeners
