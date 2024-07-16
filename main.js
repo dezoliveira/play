@@ -185,6 +185,9 @@ const removeFavorites = (video) => {
     return favorite.id.videoId !== video[0].id.videoId
   })
 
+  let favorite = document.querySelector(`#${video[0].id.videoId} .card-title span`)
+  favorite.classList.remove('favorite')
+
   favoritesArray = filteredArray
   renderFavorites()
 }
