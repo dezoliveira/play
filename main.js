@@ -39,6 +39,12 @@ window.addEventListener('load', () => {
   } else {
     renderVideos(JSON.parse(localVideos))
   }
+
+  const localFavorites = localStorage.getItem("favorites")
+
+  if (localFavorites.length) {
+    renderFavorites()
+  }
 })
 
 // Top Videos
@@ -176,7 +182,17 @@ const togglePage = (page) => {
 }
 
 const addToFavorites = (video) => {
-  favoritesArray.push(video[0])
+  const localFavorites = localStorage.getItem("favorites")
+
+  if (!localFavorites) {
+    localStorage.setItem("favorites", [])
+  }
+
+  if (video) {
+    favoritesArray.push(video[0])
+    localStorage.setItem("favorites", JSON.stringify(favoritesArray))
+  }
+
 }
 
 const removeFavorites = (video) => {
@@ -189,11 +205,23 @@ const removeFavorites = (video) => {
   favorite.classList.remove('favorite')
 
   favoritesArray = filteredArray
+  localStorage.setItem("favorites", JSON.stringify(favoritesArray))
+
   renderFavorites()
 }
 
 const renderFavorites = () => {
-  const videos = favoritesArray
+  let videos = favoritesArray
+  const localFavorites = localStorage.getItem("favorites")
+
+  if (localFavorites.length) {
+    videos = JSON.parse(localFavorites)
+    for(let i=0; i<=videos.length -1; i++) {
+      let favoriteVideos = document.querySelector(`#${videos[i].id.videoId} .card-title span`)
+      favoriteVideos.classList.add('favorite')
+    }
+  }
+  
   let html = ""
   
   for(let i=0; i<=videos.length -1; i++) {
