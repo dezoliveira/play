@@ -23,6 +23,7 @@ main {
 
 a {
   text-decoration: none;
+  width: 100vh;
 }
 
 .sidebar a:hover {
