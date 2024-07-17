@@ -153,15 +153,13 @@ const getPuplishedTime = (dateTime) => {
 //   console.log('channels', channels)
 // }
 
-const showSidebar = (e) => {
-    e.preventDefault()
+const showSidebar = () => {
     sidebar.classList.remove("hide")
     sidebar.classList.add("show")
     main.style.marginLeft = '320px'
 }
 
-const hideSidebar = (e) => {
-    e.preventDefault()
+const hideSidebar = () => {
     sidebar.classList.remove("show")
     sidebar.classList.add("hide")
     main.style.marginLeft = 'auto'
@@ -295,6 +293,8 @@ videos.addEventListener("click", (e) => {
   const id = e.target.id
   togglePage(id)
   searchVideos.textContent = ""
+
+  hideSidebar()
 })
 
 favorites.addEventListener("click", (e) => {
@@ -304,6 +304,7 @@ favorites.addEventListener("click", (e) => {
   togglePage(id)
   searchVideos.textContent = ""
   renderFavorites()
+  hideSidebar()
 })
 
 searchIcon.addEventListener('click', () => {
