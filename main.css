@@ -55,6 +55,10 @@ a {
   border-radius: 5px;
 }
 
+.searchIcon:hover {
+  cursor: pointer;
+}
+
 .favorite {
   color: #f59e0b;
 }

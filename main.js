@@ -28,6 +28,10 @@ const pageTitle = document.querySelector("#page-title")
 const videos = document.getElementById('videos')
 const favorites = document.getElementById('favorites')
 
+// search bar
+const searchVideos = document.getElementById('search-videos')
+const searchIcon = document.getElementById('search-icon')
+
 let favoritesArray = []
 
 // on load page
@@ -274,6 +278,13 @@ const renderFavorites = () => {
   }
 }
 
+const getVideo = async(query) => {
+  const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=${params.type}&part=${params.part}&q=${query}&maxResults=${params.maxResults}`)
+  const data = await res.json()
+  const items = data.items
+  renderVideos(items)
+}
+
 // Listeners
 hamburger.addEventListener("click", showSidebar)
 closeSidebar.addEventListener("click", hideSidebar)
@@ -283,6 +294,7 @@ videos.addEventListener("click", (e) => {
   
   const id = e.target.id
   togglePage(id)
+  searchVideos.textContent = ""
 })
 
 favorites.addEventListener("click", (e) => {
@@ -290,8 +302,16 @@ favorites.addEventListener("click", (e) => {
   
   const id = e.target.id
   togglePage(id)
-
+  searchVideos.textContent = ""
   renderFavorites()
+})
+
+searchIcon.addEventListener('click', () => {
+  let query = searchVideos.value
+
+  if (query.length) {
+    getVideo(query)
+  }
 })
 
 
