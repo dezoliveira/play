@@ -315,4 +315,12 @@ searchIcon.addEventListener('click', () => {
   }
 })
 
+searchVideos.addEventListener('keypress', (e) => {  
+  if (e.key === "Enter") {
+    if (searchVideos.value) {
+      searchIcon.click()
+    }
+  }
+})
+
 
