@@ -16,15 +16,18 @@ const params = {
   maxResults: 20,
 }
 
-const hamburger = document.getElementById("hamburger")
-const closeSidebar = document.getElementById("close-sidebar")
-const sidebar = document.querySelector("sidebar")
+// main
 const videosContainer = document.getElementById("videos-container")
 const favoritesContainer = document.getElementById("favorites-container")
 const main = document.querySelector(".main")
+
+// navbar
+const hamburger = document.getElementById("hamburger")
 const pageTitle = document.querySelector("#page-title")
 
 // sidebar
+const sidebar = document.querySelector("sidebar")
+const closeSidebar = document.getElementById("close-sidebar")
 const videos = document.getElementById('videos')
 const favorites = document.getElementById('favorites')
 
@@ -32,10 +35,24 @@ const favorites = document.getElementById('favorites')
 const searchVideos = document.getElementById('search-videos')
 const searchIcon = document.getElementById('search-icon')
 
+// modal
+const modal = document.getElementById('modal')
+
+const videoPlay = document.getElementById('video-play')
+
 let favoritesArray = []
+
+let player
+
+function closeModal(){
+  modal.style.display = "none"
+  stopVideo()
+}
+
 
 // on load page
 window.addEventListener('load', () => {
+
   const localVideos = localStorage.getItem("videos")
   
   if (!localVideos) {
@@ -77,6 +94,7 @@ const addToLocalStorage = (items) => {
   localStorage.setItem("videos", JSON.stringify(items))
 }
 
+// Render Videos
 const renderVideos = (videos) => {
   let html = ""
 
@@ -101,9 +119,7 @@ const renderVideos = (videos) => {
             </span>
           </div>
           <span class="card-footer">
-            <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
-              <button class="btn btn-primary">Play</button>
-            </a>
+            <button id="video-play" class="btn btn-primary">Play</button>
           </span>
         </div>
       `
@@ -129,6 +145,23 @@ const renderVideos = (videos) => {
         })
       })
     }
+
+    const nodePlay = document.querySelectorAll("#videos-container .card .card-footer button")
+    nodePlay.forEach(node => {
+      node.addEventListener('click', (e) => {
+        e.preventDefault()
+       const nodeId = node.parentElement.parentElement.id
+
+       console.log(nodeId)
+
+       let selectedVideo = videos.filter((video) => {
+        return video.id.videoId === nodeId.toString()
+       })
+
+       showModal(selectedVideo)
+
+      })
+    })
     
   }
 }
@@ -212,6 +245,7 @@ const removeFavorites = (video) => {
   renderFavorites()
 }
 
+// Render Favorites
 const renderFavorites = () => {
   let videos = favoritesArray
   const localFavorites = localStorage.getItem("favorites")
@@ -283,6 +317,79 @@ const getVideo = async(query) => {
   renderVideos(items)
 }
 
+// video player
+const playVideo = (videoId) => {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: videoId,
+    events: {
+      'onReady': onPlayerReady,
+      // 'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+let done = false
+
+// function onPlayerStateChange(event) {
+//   if (event.data == YT.PlayerState.PLAYING && !done) {
+//     setTimeout(stopVideo, 2000);
+//     done = true;
+//   }
+// }
+
+const renderModal = (video) => {
+  console.log(video[0])
+  let html = ""
+  const videoId = video[0].id.videoId
+
+  html += `
+    <div class="modal-content">
+      <span id="close-button" class="close-button">
+        <i class="fa fa-times"></i>
+      </span>
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <div id="player" class="video-iframe"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+          <button class="btn btn-primary">Youtube</button>
+        </a>
+        <button class="btn btn-secondary close-button" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  `
+
+  modal.innerHTML = html
+
+  const nodeList = document.querySelectorAll('.close-button')
+
+  nodeList.forEach(node => {
+    node.addEventListener('click', (e) => {
+      closeModal()
+    })
+  })
+
+  playVideo(videoId)
+}
+
+const showModal = (video) => {
+  modal.style.display = "flex"
+
+  renderModal(video)
+}
+
 // Listeners
 hamburger.addEventListener("click", showSidebar)
 closeSidebar.addEventListener("click", hideSidebar)
@@ -321,6 +428,12 @@ searchVideos.addEventListener('keypress', (e) => {
       searchIcon.click()
     }
   }
+})
+
+videoPlay.addEventListener('click', (e) => {
+  e.preventDefault()
+  modal.style.display = "block"
+  alert('here')
 })
 
 

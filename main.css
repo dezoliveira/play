@@ -55,10 +55,57 @@ a {
   border-radius: 5px;
 }
 
+.btn-secondary {
+  background-color: #a855f7;
+  color: #fff;
+  font-weight: 500;
+  border: 0;
+  border-radius: 5px;
+}
+
 .searchIcon:hover {
   cursor: pointer;
 }
 
 .favorite {
   color: #f59e0b;
+}
+
+.modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal .modal-content span.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 32px;
+}
+
+#modal .modal-content span.close-button:hover {
+  opacity: .9;
+  cursor: pointer;
+}
+
+.modal-content {
+  position: relative;
+  width: 70vh; 
+  height: 70vh;
+  background-color: #fff;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
