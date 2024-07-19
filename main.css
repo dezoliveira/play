@@ -85,6 +85,19 @@ a {
   justify-content: center;
 }
 
+.modal-content {
+  position: relative;
+  width: 70vh; 
+  height: 70vh;
+  background-color: #fff;
+  /* padding: 40px; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #modal .modal-content span.close-button {
   position: absolute;
   top: 10px;
@@ -97,15 +110,12 @@ a {
   cursor: pointer;
 }
 
-.modal-content {
-  position: relative;
-  width: 70vh; 
-  height: 70vh;
-  background-color: #fff;
-  padding: 40px;
+.modal .modal-content .modal-header {
+  background-color: #ef4444;
+  height: 60px;
+  width: 101%;
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+.modal .modal-content .modal-footer {
+  padding: 0 40px 40px 40px;
 }
