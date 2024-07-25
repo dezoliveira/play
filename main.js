@@ -351,16 +351,33 @@ const renderModal = (video) => {
   console.log(video[0])
   let html = ""
   const videoId = video[0].id.videoId
+  const videoTitle = video[0].snippet.title
+  const channelTitle = video[0].snippet.channelTitle
+  const publishedAt = video[0].snippet.publishedAt
 
   html += `
     <div class="modal-content">
-      <span id="close-button" class="close-button">
-        <i class="fa fa-times"></i>
-      </span>
       <div class="modal-header">
+        <div class="logo">
+          <img src="./images/icon-play.png" class="icon-play"/>
+          <label>Play</label>
+        </div>
+        <span id="close-button" class="close-button">
+          <i class="fa fa-times"></i>
+        </span>
       </div>
       <div class="modal-body">
-        <div id="player" class="video-iframe"></div>
+        <small class="video-title">${getPuplishedTime(publishedAt)}</small>
+        <div class="iframe-container">
+          <div id="player" class="video-iframe" style="width: 90%; text-align:center"></div>
+        </div>
+        <div class="video-info">
+          <label>${videoTitle}</label>
+          <span class="channel-info">
+            <img src="./images/icon-play.png" width="18px"/>
+            <small>${channelTitle}</small>
+          </span>
+        </div>
       </div>
       <div class="modal-footer">
         <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
