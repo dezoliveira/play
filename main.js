@@ -259,37 +259,43 @@ const renderFavorites = () => {
   }
   
   let html = ""
-  
-  for(let i=0; i<=videos.length -1; i++) {
-    html += `
-      <div id="${videos[i].id.videoId}" class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
-            <span class="favorites-star favorite"><i class="fa-solid fa-star" style="font-size: 24px"></i><span>
-          </div>            
-          <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
-            <img src="${videos[i].snippet.thumbnails.medium.url}" />
-          </a>
-        </div>
-        <div class="card-body">
-          <label>${videos[i].snippet.title}</label>
-          <span class="channel-info">
-            <img src="./images/icon-play.png" width="18px"/>
-            <small>${videos[i].snippet.channelTitle}</small>
+
+  if (videos.length) {
+    for(let i=0; i<=videos.length -1; i++) {
+      html += `
+        <div id="${videos[i].id.videoId}" class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
+              <span class="favorites-star favorite"><i class="fa-solid fa-star" style="font-size: 24px"></i><span>
+            </div>            
+            <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
+              <img src="${videos[i].snippet.thumbnails.medium.url}" />
+            </a>
+          </div>
+          <div class="card-body">
+            <label>${videos[i].snippet.title}</label>
+            <span class="channel-info">
+              <img src="./images/icon-play.png" width="18px"/>
+              <small>${videos[i].snippet.channelTitle}</small>
+            </span>
+          </div>
+          <span class="card-footer">
+            <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
+              <button class="btn btn-primary">Play</button>
+            </a>
           </span>
         </div>
-        <span class="card-footer">
-          <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
-            <button class="btn btn-primary">Play</button>
-          </a>
-        </span>
-      </div>
+      `
+    }
+  } else {
+    html += `
+      <h2>Nenhum favorito econtrado.</h2>
     `
   }
 
   favoritesContainer.innerHTML = html
-
+  
   const nodeList = document.querySelectorAll("#favorites-container .card .favorites-star")
 
   if (nodeList) {

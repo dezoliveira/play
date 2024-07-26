@@ -162,7 +162,7 @@
   flex-direction: column;
   justify-content: center;
   max-width: 250px;
-  min-width: 225px;
+  min-width: 200px;
   position: relative;
   gap: 2px;
   padding: 25px;
@@ -228,6 +228,20 @@
 }
 
 /* modal */
+.modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 90vh;
+  background-color: rgba(0,0,0,0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .modal-content {
   position: relative;
   width: 70vh; 
@@ -438,6 +452,10 @@
     border-radius: 3%;
     max-width: 320px;
     min-width: 320px;
+  }
+
+  .modal {
+    height: 70vh;
   }
 }
 
