@@ -22,6 +22,7 @@ const favoritesContainer = document.getElementById("favorites-container")
 const main = document.querySelector(".main")
 
 // navbar
+const navbar = document.querySelector("navbar")
 const hamburger = document.getElementById("hamburger")
 const pageTitle = document.querySelector("#page-title")
 
@@ -64,7 +65,8 @@ window.addEventListener('load', () => {
   const localFavorites = localStorage.getItem("favorites")
 
   if (localFavorites.length) {
-    renderFavorites()
+    favoritesArray = JSON.parse(localFavorites)
+    console.log(JSON.parse(localFavorites))
   }
 })
 
@@ -190,12 +192,14 @@ const showSidebar = () => {
     sidebar.classList.remove("hide")
     sidebar.classList.add("show")
     main.style.marginLeft = '320px'
+    navbar.style.marginLeft = '275px'
 }
 
 const hideSidebar = () => {
     sidebar.classList.remove("show")
     sidebar.classList.add("hide")
     main.style.marginLeft = 'auto'
+    navbar.style.marginLeft = 'auto'
 }
 
 const togglePage = (page) => {
@@ -219,7 +223,7 @@ const togglePage = (page) => {
 const addToFavorites = (video) => {
   const localFavorites = localStorage.getItem("favorites")
 
-  if (!localFavorites) {
+  if (localFavorites === null) {
     localStorage.setItem("favorites", [])
   }
 
@@ -252,10 +256,11 @@ const renderFavorites = () => {
 
   if (localFavorites.length) {
     videos = JSON.parse(localFavorites)
-    for(let i=0; i<=videos.length -1; i++) {
-      let favoriteVideos = document.querySelector(`#${videos[i].id.videoId} .card-title span`)
-      favoriteVideos.classList.add('favorite')
-    }
+    //TODO: videos container doesnt exist in this momment
+    // for(let i=0; i<=videos.length -1; i++) {
+    //   let favoriteVideos = document.querySelector(`#${videos[i].id.videoId} .card-title span`)
+    //   favoriteVideos.classList.add('favorite')
+    // }
   }
   
   let html = ""
