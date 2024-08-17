@@ -286,9 +286,7 @@ const renderFavorites = () => {
             </span>
           </div>
           <span class="card-footer">
-            <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
-              <button class="btn btn-primary">Play</button>
-            </a>
+            <button id="video-play" class="btn btn-primary">Play</button>
           </span>
         </div>
       `
