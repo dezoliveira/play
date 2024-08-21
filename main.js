@@ -131,19 +131,32 @@ const renderVideos = (videos) => {
 
     const nodeList = document.querySelectorAll("#videos-container .card .favorites-star")
 
+    console.log(nodeList)
+
     if (nodeList) {
       nodeList.forEach(node => {
         node.addEventListener('click', (e) => {
           e.preventDefault()
           const nodeId = node.parentElement.parentElement.parentElement.id
 
-          node.classList.add('favorite')
+          if (node.classList.contains('favorite')) {
+            node.classList.remove('favorite')
 
-          let selectedVideo = videos.filter((video) => {
-            return video.id.videoId === nodeId.toString()
-          })
+            let selectedVideo = videos.filter((video) => {
+              return video.id.videoId === nodeId.toString()
+            })
 
-          addToFavorites(selectedVideo)
+            removeFavorites(selectedVideo)
+
+          } else {
+            node.classList.add('favorite')
+
+            let selectedVideo = videos.filter((video) => {
+              return video.id.videoId === nodeId.toString()
+            })
+  
+            addToFavorites(selectedVideo)
+          }
         })
       })
     }
