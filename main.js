@@ -66,7 +66,6 @@ window.addEventListener('load', () => {
 
   if (localFavorites.length) {
     favoritesArray = JSON.parse(localFavorites)
-    console.log(JSON.parse(localFavorites))
   }
 })
 
@@ -83,8 +82,6 @@ const getTopVideos = async () => {
   }
   
   const data = await req.json()
-  console.log(data.items)
-
   const items = data.items
 
   renderVideos(items)
@@ -92,22 +89,44 @@ const getTopVideos = async () => {
 }
 
 const addToLocalStorage = (items) => {
-  console.log(items)
   localStorage.setItem("videos", JSON.stringify(items))
 }
 
 // Render Videos
 const renderVideos = (videos) => {
   let html = ""
+  let hasFavorite = ''
+
+  const localFavorites = localStorage.getItem("favorites")
+
+  if (localFavorites === null) {
+    localStorage.setItem("favorites", [])
+  }
+
+  if (localFavorites.length) {
+    favoritesArray = JSON.parse(localFavorites)
+  }
 
   if (videos) {
     for(let i=0; i <= videos.length -1; i++) {
+
+      // verify if has favorites and if yes, favorite is toggle on load
+      let selectedVideo = favoritesArray.filter((video) => {
+        return video.id.videoId === videos[i].id.videoId
+      })
+
+      if (selectedVideo.length){
+        hasFavorite = 'favorite'
+      } else {
+        hasFavorite = ''
+      }
+
       html += `
         <div id="${videos[i].id.videoId}" class="card">
           <div class="card-header">
             <div class="card-title">
               <small>${getPuplishedTime(videos[i].snippet.publishedAt)}</small>
-              <span class="favorites-star"><i class="fa-solid fa-star" style="font-size: 24px"></i><span>
+              <span class="favorites-star ${hasFavorite}"><i class="fa-solid fa-star" style="font-size: 24px"></i><span>
             </div>            
             <a href="https://www.youtube.com/watch?v=${videos[i].id.videoId}" target="_blank">
               <img src="${videos[i].snippet.thumbnails.medium.url}" />
@@ -131,13 +150,13 @@ const renderVideos = (videos) => {
 
     const nodeList = document.querySelectorAll("#videos-container .card .favorites-star")
 
-    console.log(nodeList)
-
     if (nodeList) {
       nodeList.forEach(node => {
+        const nodeId = node.parentElement.parentElement.parentElement.id
+
         node.addEventListener('click', (e) => {
           e.preventDefault()
-          const nodeId = node.parentElement.parentElement.parentElement.id
+          // const nodeId = node.parentElement.parentElement.parentElement.id
 
           if (node.classList.contains('favorite')) {
             node.classList.remove('favorite')
@@ -167,8 +186,6 @@ const renderVideos = (videos) => {
         e.preventDefault()
        const nodeId = node.parentElement.parentElement.id
 
-       console.log(nodeId)
-
        let selectedVideo = videos.filter((video) => {
         return video.id.videoId === nodeId.toString()
        })
@@ -177,7 +194,6 @@ const renderVideos = (videos) => {
 
       })
     })
-    
   }
 }
 
@@ -248,7 +264,6 @@ const addToFavorites = (video) => {
 }
 
 const removeFavorites = (video) => {
-  console.log(video)
   let filteredArray = favoritesArray.filter((favorite) => {
     return favorite.id.videoId !== video[0].id.videoId
   })
@@ -370,7 +385,6 @@ let done = false
 // }
 
 const renderModal = (video) => {
-  console.log(video[0])
   let html = ""
   const videoId = video[0].id.videoId
   const videoTitle = video[0].snippet.title
