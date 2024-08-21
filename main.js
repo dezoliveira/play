@@ -92,11 +92,7 @@ const addToLocalStorage = (items) => {
   localStorage.setItem("videos", JSON.stringify(items))
 }
 
-// Render Videos
-const renderVideos = (videos) => {
-  let html = ""
-  let hasFavorite = ''
-
+const getLocalFavorites = () => {
   const localFavorites = localStorage.getItem("favorites")
 
   if (localFavorites === null) {
@@ -106,20 +102,35 @@ const renderVideos = (videos) => {
   if (localFavorites.length) {
     favoritesArray = JSON.parse(localFavorites)
   }
+}
+
+const flagFavoritesOnStart = (videos) => {
+  // get local favorites on start
+  getLocalFavorites()
+
+  let hasFavorite = ''
+  // verify if has favorites and if yes, favorite is toggle on load
+  let selectedVideo = favoritesArray.filter((video) => {
+    return video.id.videoId === videos.id.videoId
+  })
+
+  if (selectedVideo.length){
+    hasFavorite = 'favorite'
+  } else {
+    hasFavorite = ''
+  }
+
+  return hasFavorite
+}
+
+// Render Videos
+const renderVideos = (videos) => {
+  let html = ""
 
   if (videos) {
     for(let i=0; i <= videos.length -1; i++) {
-
-      // verify if has favorites and if yes, favorite is toggle on load
-      let selectedVideo = favoritesArray.filter((video) => {
-        return video.id.videoId === videos[i].id.videoId
-      })
-
-      if (selectedVideo.length){
-        hasFavorite = 'favorite'
-      } else {
-        hasFavorite = ''
-      }
+      
+      const hasFavorite = flagFavoritesOnStart(videos[i])
 
       html += `
         <div id="${videos[i].id.videoId}" class="card">
