@@ -157,7 +157,7 @@ const toogleVideoFavoriteClickEvent = (videos) => {
   }
 }
 
-const addVideoPlayClickEvent = () => {
+const addVideoPlayClickEvent = (videos) => {
   const nodePlay = document.querySelectorAll("#videos-container .card .card-footer button")
   
   nodePlay.forEach(node => {
