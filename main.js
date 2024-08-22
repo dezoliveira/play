@@ -240,14 +240,14 @@ const showSidebar = () => {
     sidebar.classList.remove("hide")
     sidebar.classList.add("show")
     main.style.marginLeft = '320px'
-    navbar.style.marginLeft = '275px'
+    // navbar.style.marginLeft = '275px'
 }
 
 const hideSidebar = () => {
     sidebar.classList.remove("show")
     sidebar.classList.add("hide")
     main.style.marginLeft = 'auto'
-    navbar.style.marginLeft = 'auto'
+    // navbar.style.marginLeft = 'auto'
 }
 
 const togglePage = (page) => {

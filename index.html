@@ -12,59 +12,72 @@
   <div id="modal" class="modal" style="display: none;">
   </div>
   <navbar class="navbar">
-    <span id="hamburger" class="hamburger">
-      <i class="fa-solid fa-bars" style="color: #fff"></i>
-    </span>
+    <div class="nav-brand">
+      <span id="hamburger" class="hamburger">
+        <i class="fa-solid fa-bars" style="color: #fff"></i>
+      </span>
+      <span class="logo">
+        <img src="./images/icon-play.png" class="icon-play"/>
+        <label>Bem vindo ao Play</label>
+      </span>
+    </div>
     <div class="searchBar">
       <input id="search-videos" type="search" placeholder="Pesquisar"/>
       <span title="Pesquisar" id="search-icon" class="searchIcon">
         <i class="fa-solid fa-magnifying-glass"></i>
       </span>
     </div>
-  </navbar>
-  <sidebar class="sidebar hide">
-    <span id="close-sidebar" class="close-nav">
-      <i class="fa-solid fa-xmark"></i>
-    </span>
-    <div class="sidebar-content">      
-      <div class="side-title">
-        <img src="./images/icon-play.png" class="icon-play"/>
-        <label>Bem vindo ao Play</label>
+    <!-- <div style="display: flex; align-items: center; justify-content: center; gap: 15px;"> -->
+      <div class="profile-pic">
+        <img src="./images/profile.jpg" width="54px" style="border-radius: 50%;"/>
       </div>
-      <nav class="side-items">
-        <div class="side-icons">
-          <a>
-            <i class="fa-solid fa-video" style="color: #ef4444"></i>
-            <span id="videos">Videos</span>
-          </a>
-        </div>
-        <div class="side-icons">
-          <a>
-            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
-            <span id="favorites">Favoritos</span>
-          </a>
-        </div>
-        <div class="side-icons">
-          <a>
-            <i class="fa-solid fa-right-from-bracket" style="color: #0ea5e9;"></i>
-            <span id="exit">Sair</span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </sidebar>
-  <main class="main">
-    <span id="page-title" class="page-title">
-      <i class="fa-solid fa-medal"></i>
-      <h1 style="text-align: center;">Top Videos</h1>
-    </span>
-    <div id="videos-container" class="videos-container">
-      
-    </div>
-    <div id="favorites-container" class="favorites-container" style="display: none;">
-
-    </div>
-  </main>
+    <!-- </div> -->
+  </navbar>
+  <div>
+    <sidebar class="sidebar hide">
+      <span id="close-sidebar" class="close-nav">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+      <div class="sidebar-content">      
+        <!-- <div class="side-title">
+          <img src="./images/icon-play.png" class="icon-play"/>
+          <label>Bem vindo ao Play</label>
+        </div> -->
+        <nav class="side-items">
+          <div class="side-icons">
+            <a>
+              <i class="fa-solid fa-video" style="color: #ef4444"></i>
+              <span id="videos">Videos</span>
+            </a>
+          </div>
+          <div class="side-icons">
+            <a>
+              <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+              <span id="favorites">Favoritos</span>
+            </a>
+          </div>
+          <div class="side-icons">
+            <a>
+              <i class="fa-solid fa-right-from-bracket" style="color: #0ea5e9;"></i>
+              <span id="exit">Sair</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </sidebar>
+    <main class="main">
+      <span id="page-title" class="page-title">
+        <i class="fa-solid fa-medal"></i>
+        <h1 style="text-align: center;">Top Videos</h1>
+      </span>
+      <div id="videos-container" class="videos-container">
+        
+      </div>
+      <div id="favorites-container" class="favorites-container" style="display: none;">
+  
+      </div>
+    </main>
+  </div>
   <script type="module" src="./main.js"></script>
   <script src="https://www.youtube.com/iframe_api"></script>
 </body>
