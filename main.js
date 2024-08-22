@@ -123,6 +123,58 @@ const flagFavoritesOnStart = (videos) => {
   return hasFavorite
 }
 
+const toogleVideoFavoriteClickEvent = (videos) => {
+  const nodeList = document.querySelectorAll("#videos-container .card .favorites-star")
+
+  if (nodeList) {
+    nodeList.forEach(node => {
+      const nodeId = node.parentElement.parentElement.parentElement.id
+
+      node.addEventListener('click', (e) => {
+        e.preventDefault()
+        // const nodeId = node.parentElement.parentElement.parentElement.id
+
+        if (node.classList.contains('favorite')) {
+          node.classList.remove('favorite')
+
+          let selectedVideo = videos.filter((video) => {
+            return video.id.videoId === nodeId.toString()
+          })
+
+          removeFavorites(selectedVideo)
+
+        } else {
+          node.classList.add('favorite')
+
+          let selectedVideo = videos.filter((video) => {
+            return video.id.videoId === nodeId.toString()
+          })
+
+          addToFavorites(selectedVideo)
+        }
+      })
+    })
+  }
+}
+
+const addVideoPlayClickEvent = () => {
+  const nodePlay = document.querySelectorAll("#videos-container .card .card-footer button")
+  
+  nodePlay.forEach(node => {
+    node.addEventListener('click', (e) => {
+      e.preventDefault()
+      const nodeId = node.parentElement.parentElement.id
+
+      let selectedVideo = videos.filter((video) => {
+      return video.id.videoId === nodeId.toString()
+      })
+
+      showModal(selectedVideo)
+
+    })
+  })
+}
+
 // Render Videos
 const renderVideos = (videos) => {
   let html = ""
@@ -159,52 +211,8 @@ const renderVideos = (videos) => {
 
     videosContainer.innerHTML = html
 
-    const nodeList = document.querySelectorAll("#videos-container .card .favorites-star")
-
-    if (nodeList) {
-      nodeList.forEach(node => {
-        const nodeId = node.parentElement.parentElement.parentElement.id
-
-        node.addEventListener('click', (e) => {
-          e.preventDefault()
-          // const nodeId = node.parentElement.parentElement.parentElement.id
-
-          if (node.classList.contains('favorite')) {
-            node.classList.remove('favorite')
-
-            let selectedVideo = videos.filter((video) => {
-              return video.id.videoId === nodeId.toString()
-            })
-
-            removeFavorites(selectedVideo)
-
-          } else {
-            node.classList.add('favorite')
-
-            let selectedVideo = videos.filter((video) => {
-              return video.id.videoId === nodeId.toString()
-            })
-  
-            addToFavorites(selectedVideo)
-          }
-        })
-      })
-    }
-
-    const nodePlay = document.querySelectorAll("#videos-container .card .card-footer button")
-    nodePlay.forEach(node => {
-      node.addEventListener('click', (e) => {
-        e.preventDefault()
-       const nodeId = node.parentElement.parentElement.id
-
-       let selectedVideo = videos.filter((video) => {
-        return video.id.videoId === nodeId.toString()
-       })
-
-       showModal(selectedVideo)
-
-      })
-    })
+    toogleVideoFavoriteClickEvent(videos)
+    addVideoPlayClickEvent(videos)
   }
 }
 
@@ -274,6 +282,7 @@ const addToFavorites = (video) => {
 
 }
 
+// Remove videos from favorites
 const removeFavorites = (video) => {
   let filteredArray = favoritesArray.filter((favorite) => {
     return favorite.id.videoId !== video[0].id.videoId
@@ -286,6 +295,27 @@ const removeFavorites = (video) => {
   localStorage.setItem("favorites", JSON.stringify(favoritesArray))
 
   renderFavorites()
+}
+
+const removeFromFavoritesEvent = (videos) => {
+  const nodeList = document.querySelectorAll("#favorites-container .card .favorites-star")
+
+  if (nodeList) {
+    nodeList.forEach(node => {
+      node.addEventListener('click', (e) => {
+        e.preventDefault()
+        const nodeId = node.parentElement.parentElement.parentElement.id
+
+        node.classList.remove('favorite')
+
+        let selectedVideo = videos.filter((video) => {
+          return video.id.videoId === nodeId.toString()
+        })
+
+        removeFavorites(selectedVideo)
+      })
+    })
+  }
 }
 
 // Render Favorites
@@ -338,24 +368,7 @@ const renderFavorites = () => {
 
   favoritesContainer.innerHTML = html
   
-  const nodeList = document.querySelectorAll("#favorites-container .card .favorites-star")
-
-  if (nodeList) {
-    nodeList.forEach(node => {
-      node.addEventListener('click', (e) => {
-        e.preventDefault()
-        const nodeId = node.parentElement.parentElement.parentElement.id
-
-        node.classList.remove('favorite')
-
-        let selectedVideo = videos.filter((video) => {
-          return video.id.videoId === nodeId.toString()
-        })
-
-        removeFavorites(selectedVideo)
-      })
-    })
-  }
+  removeFromFavoritesEvent(videos)
 }
 
 const getVideo = async(query) => {
@@ -386,7 +399,17 @@ function stopVideo() {
   player.stopVideo();
 }
 
-let done = false
+const addCloseButtonEvent = () => {
+  const nodeList = document.querySelectorAll('.close-button')
+
+  nodeList.forEach(node => {
+    node.addEventListener('click', (e) => {
+      closeModal()
+    })
+  })
+}
+
+// let done = false
 
 // function onPlayerStateChange(event) {
 //   if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -394,6 +417,7 @@ let done = false
 //     done = true;
 //   }
 // }
+
 
 const renderModal = (video) => {
   let html = ""
@@ -437,14 +461,7 @@ const renderModal = (video) => {
 
   modal.innerHTML = html
 
-  const nodeList = document.querySelectorAll('.close-button')
-
-  nodeList.forEach(node => {
-    node.addEventListener('click', (e) => {
-      closeModal()
-    })
-  })
-
+  addCloseButtonEvent()
   playVideo(videoId)
 }
 
