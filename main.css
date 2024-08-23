@@ -17,8 +17,8 @@ body {
 }
 
 main {
-  max-height: 80vh;
-  height: 80vh;
+  max-height: 100vh;
+  height: 100vh;
   overflow-y: scroll;
 }
 

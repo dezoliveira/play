@@ -237,17 +237,19 @@ const getPuplishedTime = (dateTime) => {
 // }
 
 const showSidebar = () => {
-    sidebar.classList.remove("hide")
-    sidebar.classList.add("show")
-    main.style.marginLeft = '320px'
-    // navbar.style.marginLeft = '275px'
+    // mobile not included
+    if (!window.matchMedia("(max-width: 480px)").matches) {
+      main.style.marginLeft = '320px'
+    }
+    
+    sidebar.classList.remove('hide')
+    sidebar.classList.add('show')
 }
 
 const hideSidebar = () => {
-    sidebar.classList.remove("show")
-    sidebar.classList.add("hide")
     main.style.marginLeft = 'auto'
-    // navbar.style.marginLeft = 'auto'
+    sidebar.classList.remove('show')
+    sidebar.classList.add('hide')
 }
 
 const togglePage = (page) => {
