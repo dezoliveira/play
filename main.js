@@ -64,7 +64,7 @@ window.addEventListener('load', () => {
 
   const localFavorites = localStorage.getItem("favorites")
 
-  if (localFavorites.length) {
+  if (localFavorites) {
     favoritesArray = JSON.parse(localFavorites)
   }
 })
@@ -99,7 +99,7 @@ const getLocalFavorites = () => {
     localStorage.setItem("favorites", [])
   }
 
-  if (localFavorites.length) {
+  if (localFavorites) {
     favoritesArray = JSON.parse(localFavorites)
   }
 }
@@ -339,6 +339,9 @@ const renderFavorites = () => {
   }
 
   if (videos.length) {
+    // grid when we have favorites card
+    favoritesContainer.style.display = "grid"
+
     for(let i=0; i<=videos.length -1; i++) {
 
       html += `
@@ -367,6 +370,9 @@ const renderFavorites = () => {
     }
 
   } else {
+    // flex when when don't have nothing to show
+    favoritesContainer.style.display = "flex";
+
     html += `
       <h2>Nenhum favorito econtrado.</h2>
     `
