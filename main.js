@@ -1,5 +1,5 @@
 const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY
-const apiURL = "https://www.googleapis.com/youtube/v3"
+const apiURL = import.meta.env.VITE_YOUTUBE_API_URL
 
 const params = {
   type: "video",
