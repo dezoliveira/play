@@ -500,6 +500,10 @@
     /* gap: 50px; */
   }
 
+  .main .videos-container.expand {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
   .main .videos-container .card,
   .main .favorites-container .card {
     max-width: 300px;

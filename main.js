@@ -244,12 +244,14 @@ const showSidebar = () => {
     
     sidebar.classList.remove('hide')
     sidebar.classList.add('show')
+    videosContainer.classList.add("expand")
 }
 
 const hideSidebar = () => {
     main.style.marginLeft = 'auto'
     sidebar.classList.remove('show')
     sidebar.classList.add('hide')
+    videosContainer.classList.remove("expand")
 }
 
 const togglePage = (page) => {
