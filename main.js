@@ -198,7 +198,7 @@ const renderVideos = (videos) => {
           <div class="card-body">
             <label>${videos[i].snippet.title}</label>
             <span class="channel-info">
-              <img src="./images/icon-play.png" width="18px"/>
+              <img src="./src/public/images/icon-play.png" width="18px"/>
               <small>${videos[i].snippet.channelTitle}</small>
             </span>
           </div>
@@ -353,7 +353,7 @@ const renderFavorites = () => {
           <div class="card-body">
             <label>${videos[i].snippet.title}</label>
             <span class="channel-info">
-              <img src="./images/icon-play.png" width="18px"/>
+              <img src="./src/public/images/icon-play.png" width="18px"/>
               <small>${videos[i].snippet.channelTitle}</small>
             </span>
           </div>
@@ -363,7 +363,7 @@ const renderFavorites = () => {
         </div>
       `
     }
-    
+
   } else {
     html += `
       <h2>Nenhum favorito econtrado.</h2>
@@ -434,7 +434,7 @@ const renderModal = (video) => {
     <div class="modal-content">
       <div class="modal-header">
         <div class="logo">
-          <img src="./images/icon-play.png" class="icon-play"/>
+          <img src="./src/public/images/icon-play.png" class="icon-play"/>
           <label>Play</label>
         </div>
         <span id="close-button" class="close-button">
@@ -449,7 +449,7 @@ const renderModal = (video) => {
         <div class="video-info">
           <label>${videoTitle}</label>
           <span class="channel-info">
-            <img src="./images/icon-play.png" width="18px"/>
+            <img src="./src/public/images/icon-play.png" width="18px"/>
             <small>${channelTitle}</small>
           </span>
         </div>
