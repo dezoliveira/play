@@ -322,10 +322,12 @@ const removeFromFavoritesEvent = (videos) => {
 
 // Render Favorites
 const renderFavorites = () => {
+  let html = ""
   let videos = favoritesArray
+  
   const localFavorites = localStorage.getItem("favorites")
 
-  if (localFavorites.length) {
+  if (localFavorites) {
     videos = JSON.parse(localFavorites)
     //TODO: videos container doesnt exist in this momment
     // for(let i=0; i<=videos.length -1; i++) {
@@ -333,11 +335,10 @@ const renderFavorites = () => {
     //   favoriteVideos.classList.add('favorite')
     // }
   }
-  
-  let html = ""
 
   if (videos.length) {
     for(let i=0; i<=videos.length -1; i++) {
+
       html += `
         <div id="${videos[i].id.videoId}" class="card">
           <div class="card-header">
@@ -362,6 +363,7 @@ const renderFavorites = () => {
         </div>
       `
     }
+    
   } else {
     html += `
       <h2>Nenhum favorito econtrado.</h2>

@@ -491,7 +491,9 @@
   }
 
   .main .videos-container,
-  .favorites-container {
+  .main .favorites-container {
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 50px;
@@ -499,7 +501,7 @@
   }
 
   .main .videos-container .card,
-  .favorites-container .card {
+  .main .favorites-container .card {
     max-width: 300px;
     min-width: 300px;
     max-height: 350px;
