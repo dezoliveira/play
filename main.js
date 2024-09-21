@@ -1,4 +1,4 @@
-const apiKey = import.meta.YOUTUBE_API_KEY
+const apiKey = import.meta.VITE_YOUTUBE_API_KEY
 const apiURL = "https://www.googleapis.com/youtube/v3"
 
 const params = {
