@@ -63,16 +63,21 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border: 0;
-  padding: 12px 8px;
+  padding: 8px;
 }
 
 .navbar .searchBar .searchIcon {
   background-color: #0f172a;
   color: #fff;
-  padding: 12px 14px;
+  padding: 8px 10px;
   border: 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.navbar .profile-pic img {
+  width: 42px;
+  border-radius: 50%;
 }
 
 .navbar .profile-pic:hover {
@@ -164,7 +169,7 @@
 }
 
 .main {
-  padding: 50px;
+  padding: 25px;
   margin-top: 50px;
   position: sticky;
 }
@@ -174,7 +179,7 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  padding-bottom: 50px;
+  padding: 25px 0;
 }
 
 .main .page-title i {
@@ -244,8 +249,8 @@
 .main .videos-container .card .card-header img,
 .main .favorites-container .card .card-header img {
   border-radius: 3%;
-  max-width: 250px;
-  min-width: 250px;
+  max-width: 200px;
+  min-width: 200px;
 }
 
 .main .videos-container .card .channel-info,
@@ -367,9 +372,18 @@
     justify-content: center;
     gap: 5px;
   }
+
+  .navbar .profile-pic img {
+    width: 52px;
+  }
   
   .navbar .searchBar input{
     width: 500px;
+    padding: 12px 8px;
+  }
+
+  .navbar .searchBar .searchIcon {
+    padding: 12px 14px;
   }
 
   .sidebar {
@@ -419,8 +433,16 @@
     gap: 5px;
   }
 
+  .navbar .profile-pic img {
+    width: 52px;
+  }
+  
   .navbar .searchBar input{
     width: 500px;
+  }
+
+  .navbar .searchBar .searchIcon {
+    padding: 12px 14px;
   }
   
   .sidebar {
@@ -474,8 +496,17 @@
     gap: 5px;
   }
 
+  .navbar .profile-pic img {
+    width: 52px;
+  }
+  
   .navbar .searchBar input{
     width: 500px;
+    padding: 12px 8px;
+  }
+
+  .navbar .searchBar .searchIcon {
+    padding: 12px 14px;
   }
   
   .sidebar {
@@ -513,10 +544,10 @@
   }
 
   .main .videos-container .card .card-header img,
-  .favorites-container .card .card-header img {
+  .main .favorites-container .card .card-header img {
     border-radius: 3%;
-    max-width: 240px;
-    min-width: 240px;
+    max-width: 250px;
+    min-width: 250px;
   }
 
   .modal-content {
